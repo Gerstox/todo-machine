@@ -1,10 +1,5 @@
 // import logo from './platzi.webp';
-
-import { TodoCounter } from '../TodoCounter';
-import { TodoSearch } from '../TodoSearch';
-import { TodoList } from '../TodoList';
-import { TodoItem } from '../TodoItem';
-import { TodoCreateButton } from '../TodoCreateButton';
+import { AppUI } from './AppUI';
 import { useLocalStorage } from './useLocalStorage';
 
 import React from 'react';
@@ -22,7 +17,12 @@ import React from 'react';
 function App() {
 
 
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error
+  } = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
@@ -44,7 +44,6 @@ function App() {
     saveTodos(newTodos);
   };
 
-
   const deleteTodo = (todoIndex) => {
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
@@ -52,32 +51,19 @@ function App() {
   };
 
   return (
-    // React.Fragment, se usa para poder retornar sin necesidad de usar div
-    //<React.Fragment>
-    <>
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-
-      <TodoSearch
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-
-      <TodoList>
-        { searchedTodos.map((todo, index) => (
-          <TodoItem
-            key={index}
-            text={todo.text}
-            completed={todo.completed}
-            onComplete={() => completeTodo(index)}
-            onDelete={() => deleteTodo(index)}/>
-        ))}
-      </TodoList>
-
-      <TodoCreateButton/>
-
-    </>
-    //</React.Fragment>
+    <AppUI
+      loading={loading}
+      error={error}
+      completedTodos={completedTodos}
+      totalTodos={totalTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      searchedTodos={searchedTodos}
+      completeTodo={completeTodo}
+      deleteTodo={deleteTodo}
+    />
   );
+
 }
 
 export default App;
