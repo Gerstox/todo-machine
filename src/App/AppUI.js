@@ -10,6 +10,7 @@ import { EmptyTodos } from '../EmptyTodos';
 import { TodoCreateButton } from '../TodoCreateButton';
 import { TodoForm } from '../TodoForm';
 import { Modal } from '../Modal';
+import { MiniHeader } from '../MiniHeader';
 
 import { TodoContext } from '../TodoContext';
 
@@ -27,6 +28,7 @@ function AppUI() {
 
   return (
     <>
+      <MiniHeader />
       <TodoCounter />
       <TodoSearch />
 

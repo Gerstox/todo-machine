@@ -1,0 +1,36 @@
+.MainHeader {
+    text-align: center;
+}
+
+.MainHeader p {
+    font-family: 'Montserrat';
+    font-size: 18px;
+    color: #4f4f4f;
+    margin: 0;
+}
+
+.Divisor {
+    width: 40%;
+    margin: 10px auto;
+    height: 4px;
+    background-color: rgb(255, 145, 77);
+    border: none;
+    border-radius: 10px;
+}
+
+/* CARDS */
+.Cards {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 20px;
+}
+
+.Cards-Item {
+    padding: 15px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 5px 50px rgb(32 35 41 / 25%);
+    font-family: 'Montserrat';
+}
